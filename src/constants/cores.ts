@@ -1,6 +1,18 @@
 export const CORES = {
-    background: "#0D133D",
-    heading: "#DDE3F0",
-    primary: "#E51C44",
-    line: "#991F36"
+    primary: '#E51C44',
+
+    secondary100: '#0A1033',
+    secondary90: '#0D133D',
+    secondary80: '#10174B',
+    secondary70: '#121B59',
+    secondary60: '#162069',
+    secondary50: '#1A267A',
+    secondary40: '#1D2A88',
+    secondary30: '#20309A',
+
+    overlay: 'rgba(0,0,0,0.7)',
+    highlight: '#ABB1CC',
+    heading: '#DDE3F0',
+    line: '#991F36',
+    on: '#32BD50',
 }
