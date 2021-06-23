@@ -6,10 +6,11 @@ import { styles } from "./styles";
 
 type Props = {
     categorySelect: string;
+    hasCheckBox?: boolean;
     setCategoria: (categoriaId: string) => void;
 };
 
-export const CategorySelect: React.FC<Props> = ({ categorySelect, setCategoria }) => {
+export const CategorySelect: React.FC<Props> = ({ categorySelect, setCategoria, hasCheckBox = false }) => {
     return (
         <ScrollView
             horizontal
@@ -21,7 +22,8 @@ export const CategorySelect: React.FC<Props> = ({ categorySelect, setCategoria }
                 key={categoriaItem.id}
                 titulo={categoriaItem.titulo}
                 icon={categoriaItem.icon}
-                checked={categoriaItem.id === categorySelect} />)}
+                checked={categoriaItem.id === categorySelect}
+                hasCheckBox={hasCheckBox} />)}
         </ScrollView>
     );
 };

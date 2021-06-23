@@ -1,6 +1,6 @@
 import React from "react";
-import { FlatList, View, Text } from "react-native";
-import { ButtonAdd, CategorySelect, ListHeader, Appointment, ListDivider } from "../../components";
+import { FlatList, View } from "react-native";
+import { ButtonAdd, CategorySelect, ListHeader, Appointment, ListDivider, Background } from "../../components";
 import { Profile } from "../Profile";
 import { styles } from "./styles";
 
@@ -39,7 +39,7 @@ export const Home = () => {
     };
 
     return (
-        <View style={styles.container}>
+        <Background>
             <View style={styles.header}>
                 <Profile />
                 <ButtonAdd />
@@ -56,6 +56,6 @@ export const Home = () => {
                     showsVerticalScrollIndicator={false}
                 />
             </View>
-        </View>
+        </Background>
     );
 };

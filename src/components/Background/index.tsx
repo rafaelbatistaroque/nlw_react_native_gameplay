@@ -8,9 +8,9 @@ type Props = {
 };
 
 export const Background: React.FC<Props> = ({ children }) => {
-    const { secondary80, secondary100 } = CORES;
+    const { secondary85, secondary100 } = CORES;
     return (
-        <LinearGradient style={styles.container} colors={[secondary80, secondary100]}>
+        <LinearGradient style={styles.container} colors={[secondary85, secondary100]}>
             {children}
         </LinearGradient>
     );
