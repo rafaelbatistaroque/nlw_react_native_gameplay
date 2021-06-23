@@ -8,3 +8,5 @@ export * from "./ListHeader";
 export * from "./GuildIcon";
 export * from "./Appointment";
 export * from "./ListDivider";
+export * from "./Header";
+export * from "./Member";
