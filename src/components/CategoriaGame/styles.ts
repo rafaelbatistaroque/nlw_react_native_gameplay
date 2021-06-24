@@ -41,6 +41,7 @@ export const styles = StyleSheet.create({
     titulo: {
         fontFamily: FONTES.title700,
         color: CORES.heading,
-        fontSize: 15
+        fontSize: 15,
+        marginTop: 15
     }
 });

@@ -6,7 +6,6 @@ export const styles = StyleSheet.create({
         width: "100%",
         flexDirection: "row",
         alignSelf: "center"
-
     },
     content: {
         flex: 1

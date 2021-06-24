@@ -1,5 +1,5 @@
+import { CORES, FONTES } from "../../constants";
 import { StyleSheet } from 'react-native';
-import { FONTES, CORES } from "../../constants";
 
 export const styles = StyleSheet.create({
     container: {
@@ -9,18 +9,6 @@ export const styles = StyleSheet.create({
         borderRadius: 8,
         flexDirection: "row",
         alignItems: "center"
-    },
-    iconWrapper: {
-        width: 56,
-        height: 56,
-        justifyContent: "center",
-        alignItems: "center",
-        borderRightWidth: 1,
-        borderColor: CORES.line
-    },
-    iconButton: {
-        width: 24,
-        height: 18
     },
     title: {
         flex: 1,

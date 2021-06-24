@@ -31,6 +31,7 @@ export const Appointment: React.FC<Props> = ({ data, ...rest }) => {
     const [category] = CATEGORIAS.filter(item => item.id === data.id);
     const { owner, name } = data.guild;
     const { primary, on } = CORES;
+
     return (
         <RectButton {...rest}>
             <View style={styles.container}>

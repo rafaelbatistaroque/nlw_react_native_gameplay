@@ -6,7 +6,7 @@ import { CORES } from "../../constants";
 
 export const ButtonAdd: React.FC<RectButtonProps> = ({ ...rest }) => {
     return (
-        <RectButton style={styles.container}>
+        <RectButton style={styles.container} {...rest}>
             <MaterialCommunityIcons name="plus" color={CORES.heading} size={24} />
         </RectButton>
     );
