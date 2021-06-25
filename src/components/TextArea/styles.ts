@@ -11,6 +11,9 @@ export const styles = StyleSheet.create({
         fontFamily: FONTES.text400,
         fontSize: 12,
         marginRight: 4,
-        textAlign: "center"
+        borderWidth: 1,
+        borderColor: CORES.secondary50,
+        padding: 16,
+        textAlignVertical: "top"
     }
 });

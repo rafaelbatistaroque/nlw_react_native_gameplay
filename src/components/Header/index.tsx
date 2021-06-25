@@ -27,9 +27,9 @@ export const Header: React.FC<Props> = ({ titulo, action }) => {
                 <Feather name="arrow-left" size={24} color={heading} />
             </BorderlessButton>
             <Text style={styles.titulo}>{titulo}</Text>
-            {action && <View>
-                {action}
-            </View>}
+            {action
+                ? <View>{action}</View>
+                : <View style={{ width: 24 }} />}
         </LinearGradient>
     );
 };

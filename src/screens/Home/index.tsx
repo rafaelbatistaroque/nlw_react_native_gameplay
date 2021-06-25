@@ -57,16 +57,15 @@ export const Home = () => {
             </View>
 
             <CategorySelect categorySelect={categoria} setCategoria={handleCategorySelect} />
-            <View style={styles.content}>
-                <ListHeader titulo="Partidas agendadas" subtitulo="Total 6" />
-                <FlatList data={appointments} keyExtractor={item => item.id} renderItem={({ item }) => (
-                    <Appointment onPress={handleAppointmentDetails} data={item} />
-                )}
-                    ItemSeparatorComponent={() => <ListDivider />}
-                    style={styles.matches}
-                    showsVerticalScrollIndicator={false}
-                />
-            </View>
+            <ListHeader titulo="Partidas agendadas" subtitulo="Total 6" />
+            <FlatList data={appointments} keyExtractor={item => item.id} renderItem={({ item }) => (
+                <Appointment onPress={handleAppointmentDetails} data={item} />
+            )}
+                contentContainerStyle={{ paddingBottom: 50 }}
+                ItemSeparatorComponent={() => <ListDivider />}
+                style={styles.matches}
+                showsVerticalScrollIndicator={false}
+            />
         </Background>
     );
 };

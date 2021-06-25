@@ -23,9 +23,10 @@ export const styles = StyleSheet.create({
         color: CORES.heading
     },
     subtitulo: {
-        fontSize: 16,
+        fontSize: 14,
         fontFamily: FONTES.text400,
-        color: CORES.heading
+        color: CORES.heading,
+        lineHeight: 22
     },
     members: {
         marginLeft: 24,

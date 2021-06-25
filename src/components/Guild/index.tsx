@@ -1,17 +1,10 @@
-import React from "react";
-import { TouchableOpacity, TouchableOpacityProps, View, Text } from "react-native";
-import { GuildIcon } from "../GuildIcon";
 import { Feather } from "@expo/vector-icons";
-import { styles } from "./styles";
+import React from "react";
+import { Text, TouchableOpacity, TouchableOpacityProps, View } from "react-native";
 import { CORES } from "../../constants";
-import { SvgProps } from "react-native-svg";
-
-export type GuildProps = {
-    id: string;
-    name: string;
-    icon?: React.FC<SvgProps>;
-    owner: boolean;
-};
+import { GuildProps } from "../Appointment";
+import { GuildIcon } from "../GuildIcon";
+import { styles } from "./styles";
 
 type Props = TouchableOpacityProps & {
     data: GuildProps;

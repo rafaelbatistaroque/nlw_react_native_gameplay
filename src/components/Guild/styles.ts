@@ -16,12 +16,11 @@ export const styles = StyleSheet.create({
         fontFamily: FONTES.title700,
         color: CORES.heading,
         fontSize: 18,
-        marginBottom: 12
+        marginBottom: 4
     },
     type: {
         fontFamily: FONTES.text400,
         color: CORES.highlight,
-        fontSize: 12,
-        marginBottom: 24
+        fontSize: 12
     }
 });

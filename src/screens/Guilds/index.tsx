@@ -29,8 +29,10 @@ export const Guilds: React.FC<Props> = ({ handlerGuildsSelect }) => {
                 renderItem={({ item }) => (
                     <Guild data={item} onPress={() => handlerGuildsSelect(item)} />
                 )}
+                contentContainerStyle={{ paddingBottom: 50, paddingTop: 100 }}
                 showsVerticalScrollIndicator={false}
-                ItemSeparatorComponent={() => <ListDivider />}
+                ItemSeparatorComponent={() => <ListDivider ehCentralizado />}
+                ListHeaderComponent={() => <ListDivider ehCentralizado />}
                 style={styles.guilds} />
 
         </View>
