@@ -5,7 +5,7 @@ import { AppointmentCreate, AppointmentDetails, Home } from "../screens";
 
 const { Navigator, Screen } = createStackNavigator();
 
-export const AuthRoutes = () => {
+export const AppRoutes = () => {
     return (
         <Navigator headerMode="none" screenOptions={{ cardStyle: { backgroundColor: CORES.secondary100 } }}>
             <Screen name="Home" component={Home} />

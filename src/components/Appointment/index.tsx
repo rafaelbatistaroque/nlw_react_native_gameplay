@@ -18,24 +18,24 @@ export type GuildProps = {
 export type AppointmentProps = {
     id: string;
     guild: GuildProps,
-    category: string,
+    categoria: string,
     date: string,
     description: string,
 };
 
 type Props = RectButtonProps & {
-    data: AppointmentProps;
+    propriedade: AppointmentProps;
 };
 
-export const Appointment: React.FC<Props> = ({ data, ...rest }) => {
-    const [category] = CATEGORIAS.filter(item => item.id === data.id);
-    const { owner, name } = data.guild;
+export const Appointment: React.FC<Props> = ({ propriedade, ...rest }) => {
+    const [category] = CATEGORIAS.filter(item => item.id === propriedade.categoria);
+    const { owner, name, id, icon } = propriedade.guild;
     const { primary, on } = CORES;
 
     return (
         <RectButton {...rest}>
             <View style={styles.container}>
-                <GuildIcon />
+                <GuildIcon guildId={id} iconId={icon} />
                 <View style={styles.content}>
                     <View style={styles.header}>
                         <Text style={styles.titulo}>{name}</Text>
@@ -45,7 +45,7 @@ export const Appointment: React.FC<Props> = ({ data, ...rest }) => {
                         <View style={styles.dateInfo}>
                             <CalendarSvg />
                             <Text style={styles.date}>
-                                {data.date}
+                                {propriedade.date}
                             </Text>
                         </View>
                         <View style={styles.playersInfo}>

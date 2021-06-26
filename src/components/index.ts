@@ -15,3 +15,5 @@ export * from "./TextArea";
 export * from "./CustomButton";
 export * from "./Guild";
 export * from "./ModalView";
+export * from "./ModalLogout";
+export * from "./Loading";

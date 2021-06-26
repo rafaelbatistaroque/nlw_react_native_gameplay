@@ -1,1 +1,1 @@
-export * from "./discordAuth";
+export * from "./database";

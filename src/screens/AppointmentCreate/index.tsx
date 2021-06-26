@@ -6,11 +6,24 @@ import { Header, CategorySelect, GuildIcon, SmallInput, TextArea, CustomButton, 
 import { styles } from "./styles";
 import { CORES } from "../../constants";
 import { Guilds } from "../Guilds";
+import { UseForm } from "../../hooks/UseForm";
+import uuid from "react-native-uuid";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { COLLECTION_APPOINTMENTS } from "../../configs";
+import { useNavigation } from "@react-navigation/native";
 
 export const AppointmentCreate: React.FC = () => {
     const [categoria, setNovaCategoria] = React.useState<string>("");
     const [openGuildsModal, setOpenGuildsModal] = React.useState<boolean>(false);
     const [guild, setGuild] = React.useState<GuildProps>({} as GuildProps);
+
+    const diaForm = UseForm<string>("");
+    const mesForm = UseForm<string>("");
+    const horaForm = UseForm<string>("");
+    const minutoForm = UseForm<string>("");
+    const descricaoForm = UseForm<string>("");
+
+    const navigation = useNavigation();
 
     const handlerOpenGuilds = () => {
         setOpenGuildsModal(true);
@@ -29,6 +42,23 @@ export const AppointmentCreate: React.FC = () => {
         setNovaCategoria(categoriaId);
     };
 
+    const handleSave = async () => {
+        const newAppointment = {
+            id: uuid.v4(),
+            guild,
+            categoria,
+            data: `${diaForm.valor}/${mesForm.valor} às ${horaForm.valor}:${minutoForm.valor}h`,
+            descricao: descricaoForm.valor
+        };
+
+        const storage = await AsyncStorage.getItem(COLLECTION_APPOINTMENTS);
+        const appointments = storage ? JSON.parse(storage) : [];
+
+        await AsyncStorage.setItem(COLLECTION_APPOINTMENTS, JSON.stringify([...appointments, newAppointment]));
+
+        navigation.navigate("Home");
+    };
+
     return (
         <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.container}>
             <Background>
@@ -40,7 +70,7 @@ export const AppointmentCreate: React.FC = () => {
                         <RectButton onPress={handlerOpenGuilds}>
                             <View style={styles.select}>
                                 {
-                                    guild.icon ? <GuildIcon /> : <View style={styles.image} />
+                                    guild.icon ? <GuildIcon guildId={guild.id} iconId={guild.icon} /> : <View style={styles.image} />
                                 }
                                 <View style={styles.selectBody}>
                                     <Text style={styles.label}>
@@ -53,17 +83,17 @@ export const AppointmentCreate: React.FC = () => {
                             <View>
                                 <Text style={[styles.label, { marginBottom: 12 }]}>Dia e Mês</Text>
                                 <View style={styles.column}>
-                                    <SmallInput maxLength={2} />
+                                    <SmallInput onChangeText={diaForm.change} maxLength={2} />
                                     <Text style={styles.divider}>/</Text>
-                                    <SmallInput maxLength={2} />
+                                    <SmallInput onChangeText={mesForm.change} maxLength={2} />
                                 </View>
                             </View>
                             <View>
                                 <Text style={[styles.label, { marginBottom: 12 }]}>Hora e Minuto</Text>
                                 <View style={styles.column}>
-                                    <SmallInput maxLength={2} />
+                                    <SmallInput onChangeText={horaForm.change} maxLength={2} />
                                     <Text style={styles.divider}>:</Text>
-                                    <SmallInput maxLength={2} />
+                                    <SmallInput onChangeText={minutoForm.change} maxLength={2} />
                                 </View>
                             </View>
                         </View>
@@ -71,9 +101,9 @@ export const AppointmentCreate: React.FC = () => {
                             <Text style={styles.label}>Descrição</Text>
                             <Text style={styles.caractersLimit}>Max 100 caracteres</Text>
                         </View>
-                        <TextArea multiline maxLength={100} numberOfLines={50} autoCorrect={false} />
+                        <TextArea onChangeText={descricaoForm.change} multiline maxLength={100} numberOfLines={50} autoCorrect={false} />
                         <View style={styles.footer}>
-                            <CustomButton titulo="Agendar" />
+                            <CustomButton onPress={handleSave} titulo="Agendar" />
                         </View>
                     </View>
                 </ScrollView>

@@ -1,9 +1,24 @@
 import React from "react";
-import { Image } from "react-native";
+import { Image, View } from "react-native";
 import { styles } from "./styles";
+import DiscordSVG from "../../assets/discord.svg";
+import { SvgProps } from "react-native-svg";
 
-export const GuildIcon: React.FC = () => {
+const { CDN_IMAGEM } = process.env;
+
+type Props = {
+    guildId: string;
+    iconId?: React.FC<SvgProps>;
+};
+
+export const GuildIcon: React.FC<Props> = ({ guildId, iconId }) => {
+
     return (
-        <Image source={{ uri: "https://pbs.twimg.com/media/E1ScfE6WUAEVsw8.png" }} style={styles.image} resizeMode="cover" />
+        <View style={styles.container}>
+            {iconId
+                ? <Image source={{ uri: `${CDN_IMAGEM}/icons/${guildId}/${iconId}.png` }} style={styles.image} resizeMode="cover" />
+                : <DiscordSVG width={40} height={40} />
+            }
+        </View>
     );
 };
